@@ -2,14 +2,14 @@
 # Execute > cd 6_Symbols
 # Execute > pip install whisper ffmpeg-python
 # Execute > python /workspaces/whisper/6_Symbols/vrollprocess_folder.pl
-import whisper
 import subprocess
 import datetime
 import yaml
 import os
+import whisper
 
 # Path to your folder containing .mov files
-mov_file_folder = "/workspaces/whisper/6_Symbols/vroll_dec1"
+mov_file_folder = "/workspaces/whisper/6_Symbols/vroll_dec1.1"
 audio_file = "/workspaces/whisper/6_Symbols/temp_audio.wav"
 output_file = f"/workspaces/whisper/6_Symbols/transcription_{datetime.date.today()}.yaml"
 
@@ -46,16 +46,21 @@ else:
     existing_data = []
 
 # Find all .mov files in the specified folder
+print(f"🔍 Searching for .mov files in {mov_file_folder}...")
 for root, dirs, files in os.walk(mov_file_folder):
     for file in files:
-        if file.endswith(".mov"):
+        if file.lower().endswith(".mov"):
             mov_file = os.path.join(root, file)
             print(f"📂 Found {mov_file}")
             transcription_data = transcribe_mov_file(mov_file)
             existing_data.append(transcription_data)
+        else:
+            print(f"❌ No .mov files found in {root}")
 
 # Write the updated data back to the YAML file
 with open(output_file, "w") as f:
     yaml.dump(existing_data, f, default_flow_style=False)
 
 print(f"📄 Transcriptions appended to {output_file}")
+
+
