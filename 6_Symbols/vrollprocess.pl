@@ -6,6 +6,7 @@ import whisper
 import subprocess
 import datetime
 import yaml
+import os
 
 # Path to your .mov file
 mov_file = "/workspaces/whisper/6_Symbols/Timeline.mov"
@@ -19,14 +20,24 @@ subprocess.run(["ffmpeg", "-y", "-i", mov_file, "-ar", "16000", "-ac", "1", "-q:
 model = whisper.load_model("base")  # Use 'small', 'medium', or 'large' for more accuracy
 result = model.transcribe(audio_file)
 
-# Prepare the YAML content
+# Prepare the transcription data
 transcription_data = {
     "file_name": mov_file,
     "transcription": result["text"]
 }
 
-# Append the transcription to the output file in YAML format
-with open(output_file, "a") as f:
-    yaml.dump(transcription_data, f, default_flow_style=False)
+# Load existing transcriptions if the file exists
+if os.path.exists(output_file):
+    with open(output_file, "r") as f:
+        existing_data = yaml.safe_load(f) or []
+else:
+    existing_data = []
+
+# Append the new transcription data
+existing_data.append(transcription_data)
+
+# Write the updated data back to the YAML file
+with open(output_file, "w") as f:
+    yaml.dump(existing_data, f, default_flow_style=False)
 
 print(f"Transcription appended to {output_file}")
