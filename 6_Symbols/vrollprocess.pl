@@ -29,7 +29,9 @@ transcription_data = {
 # Load existing transcriptions if the file exists
 if os.path.exists(output_file):
     with open(output_file, "r") as f:
-        existing_data = yaml.safe_load(f) or []
+        existing_data = yaml.safe_load(f)
+        if not isinstance(existing_data, list):
+            existing_data = []
 else:
     existing_data = []
 
