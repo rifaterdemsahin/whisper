@@ -20,10 +20,7 @@ git pull; git add . ; git commit -m "Codespaces" -m "updates"; git push;sleep 3;
 ```
 
 Collaborators>
-- Cheuk > https://www.linkedin.com/in/ch-c-797533177/
-- Nawal > https://www.linkedin.com/in/nawalc/
-- Tomi > https://www.linkedin.com/in/oluwatomi-amao-245b61189/
-
+-  Tuncer Karaarslan > https://www.linkedin.com/in/tuncerkaraarslan/
 
 prompts:
 # 🎯 Objectives
