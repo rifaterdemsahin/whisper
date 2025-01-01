@@ -1,8 +1,4 @@
-### The Story of the Grafana Automation Project 📊🚀
-
-In a workspace dedicated to **Grafana automation**, a team led by @rifaterdemsahin embarked on a journey to develop an automated solution for Grafana, using cutting-edge technologies and methods. Here’s the story, told through the structure of their work:
-
----
+### The Story of the project
 
 #### **1. Journey: Setting the Stage**  
 At the heart of the project lies the `1_Journey` folder, which marks the initial steps toward a fully functional Grafana setup. Key documents like `README.md` and `proof_of_concept.md` lay out the project’s vision and early ideas, giving the team a clear direction. The journey is about more than just setting up Grafana—it's about envisioning a complete system of monitoring and rendering.
