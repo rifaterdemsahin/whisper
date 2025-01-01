@@ -51,3 +51,42 @@ It looks like you're encountering issues with pushing large files to GitHub. Git
 By following these steps, you should be able to push your large files to GitHub without encountering the file size limit error[1](https://github.com/orgs/community/discussions/61221)[2](https://trycatchdebug.net/news/1341032/large-file-github-limit).
 
 If you run into any issues, feel free to ask for more help! 😊
+
+It seems like you're still encountering issues with pushing large files to GitHub, even after initializing Git LFS and tracking the files. Let's go through the steps again to ensure everything is set up correctly:
+
+1. **Initialize Git LFS**:
+   ```sh
+   git lfs install
+   ```
+
+2. **Track the large files**:
+   ```sh
+   git lfs track "*.MOV"
+   git lfs track "*.mp4"
+   ```
+
+3. **Add the tracked files and .gitattributes**:
+   ```sh
+   git add .gitattributes
+   git add 6_Symbols/vroll_dec1/IMG_7314.MOV
+   git add 6_Symbols/vroll_dec1/RPReplay_Final1735380819.mp4
+   ```
+
+4. **Commit the changes**:
+   ```sh
+   git commit -m "Track large files with Git LFS"
+   ```
+
+5. **Push the changes**:
+   ```sh
+   git push origin main
+   ```
+
+If you still encounter the error, it might be due to the files not being properly tracked by Git LFS. You can check the status of LFS tracked files with:
+```sh
+git lfs ls-files
+```
+
+Make sure the large files are listed. If they are not, you might need to re-track them and commit again.
+
+If the issue persists, please let me know, and we can troubleshoot further! 😊
